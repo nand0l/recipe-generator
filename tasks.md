@@ -14,3 +14,13 @@ git branch -M main
 git remote add origin https://github.com/nand0l/recipe-generator.git
 git push -u origin main
 ```
+
+```bash
+npm create amplify@latest -y
+```
+
+```bash
+git add .
+git commit -m 'installing amplify'
+git push origin main
+```
