@@ -1,42 +1,251 @@
-#root {
-  max-width: 1280px;
+:root {
+  /* Freshly Picked Oranges color palette */
+  --orange-peel: #FF9F1C;
+  --orange-red: #FF4000;
+  --burnt-orange: #CB4721;
+  --dark-orange: #A63C06;
+  --light-cream: #FFFBF5;
+  --text-dark: #2D2A32;
+  --text-light: #FFFBF5;
+}
+
+body {
+  background-color: var(--light-cream);
+  color: var(--text-dark);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-container {
   margin: 0 auto;
-  padding: 2rem;
+  padding: 20px;
   text-align: center;
+  max-width: 1200px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.language-selector {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.language-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  margin-left: 10px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.language-button:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.language-button.active {
+  opacity: 1;
+  transform: scale(1.2);
+  text-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.header-container {
+  padding-bottom: 2.5rem;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  max-width: 48rem;
+  background-color: var(--orange-peel);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.main-header {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: var(--text-light);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.main-header .highlight {
+  color: var(--light-cream);
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+}
+
+.main-header .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--burnt-orange);
+  border-radius: 2px;
+}
+
+@media (min-width: 640px) {
+  .main-header {
+    font-size: 3.75rem;
   }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.description {
+  font-weight: 500;
+  font-size: 1.125rem;
+  max-width: 65ch;
+  color: var(--text-light);
+  margin: 1.5rem auto 0;
+  line-height: 1.6;
 }
 
-.card {
-  padding: 2em;
+.form-container {
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.read-the-docs {
-  color: #888;
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.wide-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: 2px solid var(--orange-peel);
+  border-radius: 8px;
+  background-color: var(--light-cream);
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.wide-input:focus {
+  outline: none;
+  border-color: var(--burnt-orange);
+  box-shadow: 0 0 0 3px rgba(203, 71, 33, 0.2);
+}
+
+.wide-input::placeholder {
+  color: #999;
+}
+
+.search-button {
+  width: 100%; /* Make the button full width */
+  max-width: 300px; /* Set a maximum width for the button */
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: var(--orange-peel);
+  color: var(--text-light);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-button:hover {
+  background-color: var(--burnt-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.search-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.search-button:last-child {
+  margin-bottom: 0;
+  background-color: var(--dark-orange);
+}
+
+.search-button:last-child:hover {
+  background-color: var(--burnt-orange);
+}
+
+.result-container {
+  margin-top: 30px;
+  transition: all 0.5s ease-out;
+  overflow: hidden;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.loader-container p {
+  color: var(--burnt-orange);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.result {
+  background-color: white;
+  border-left: 5px solid var(--orange-peel);
+  border-radius: 10px;
+  padding: 25px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: var(--text-dark);
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.8;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.result::before {
+  content: '🍊 Recipe';
+  display: block;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: var(--burnt-orange);
+  border-bottom: 2px dashed var(--orange-peel);
+  padding-bottom: 10px;
+}
+
+.prompt-container {
+  background-color: rgba(255, 159, 28, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-left: 5px solid var(--orange-peel);
+}
+
+.prompt-container h3 {
+  color: var(--burnt-orange);
+  margin-top: 0;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.prompt {
+  font-family: monospace;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  color: var(--text-dark);
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
